@@ -1,0 +1,14 @@
+package org.yosy
+
+class Usuario {
+
+	static hasMany =	[deseos:Deseo]
+
+	String nombre
+	String email
+	Date fechaAlta
+
+	static mapping = { id generator: 'native' }
+
+	static constraints = { nombre(nullable: true)  }
+}

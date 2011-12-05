@@ -1,0 +1,33 @@
+<!--
+  To change this template, choose Tools | Templates
+  and open the template in the editor.
+-->
+
+<%@ page contentType="text/html;charset=UTF-8"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sample title</title>
+<g:javascript library="jquery" plugin="jquery" />
+<uploader:head />
+</head>
+<body>
+<uploader:uploader id="yourUploaderId" url="${[controller:'index', action:'updateImage']}">
+  <uploader:onComplete>
+    $('#updateMe').update('Thank you for uploading the file '+fileName);  
+  </uploader:onComplete>
+</uploader:uploader>
+	<g:formRemote name="myForm" update="updateMe"
+		url="[ controller: 'index', action: 'updateImage']" method="POST">
+    Author: <input name="author" type="text"></input>
+    Image: <input name="file" type="file"></input>
+		<g:submitToRemote update="updateMe"
+			url="[ controller: 'index', action: 'updateImage']" value="Submit" />
+	</g:formRemote>
+	${flash.noLogIn }<br>
+	
+		<g:link controller="index" action="start">Inicio de flujo</g:link>
+	<div id="updateMe"></div>
+</body>
+</html>

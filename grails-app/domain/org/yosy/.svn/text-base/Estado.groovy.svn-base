@@ -1,0 +1,15 @@
+package org.yosy
+
+class Estado {
+	
+	static  belongsTo = Deseo
+	
+	String estado
+
+	static mapping = {
+		id generator: 'native'
+	}
+	
+	static constraints = {
+	}
+}
