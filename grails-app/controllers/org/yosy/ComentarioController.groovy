@@ -10,7 +10,7 @@ class ComentarioController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = Math.min(params.max ? params.int('max') : 10, 105)
         [comentarioInstanceList: Comentario.list(params), comentarioInstanceTotal: Comentario.count()]
     }
 
@@ -95,7 +95,7 @@ class ComentarioController {
         }
         else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'comentario.label', default: 'Comentario'), params.id])}"
-            redirect(action: "list")
+            redirect(action: "list") 
         }
     }
 }
