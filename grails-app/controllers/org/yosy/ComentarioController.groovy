@@ -10,7 +10,7 @@ class ComentarioController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 105)
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [comentarioInstanceList: Comentario.list(params), comentarioInstanceTotal: Comentario.count()]
     }
 
