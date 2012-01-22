@@ -36,45 +36,12 @@
 								value="${deseoInstance?.descripcion}" />
 						</td>
 					</tr>
-
-<%--					<tr class="prop">--%>
-<%--						<td valign="top" class="name"><label for="fechaCreacion"><g:message--%>
-<%--									code="deseo.fechaCreacion.label" default="Fecha Creacion" /></label></td>--%>
-<%--						<td valign="top"--%>
-<%--							class="value ${hasErrors(bean: deseoInstance, field: 'fechaCreacion', 'errors')}">--%>
-<%--							<g:datePicker name="fechaCreacion" precision="day"--%>
-<%--								value="${deseoInstance?.fechaCreacion}" />--%>
-<%--						</td>--%>
-<%--					</tr>--%>
-<%----%>
-<%--					<tr class="prop">--%>
-<%--						<td valign="top" class="name"><label for="fechaModificacion"><g:message--%>
-<%--									code="deseo.fechaModificacion.label"--%>
-<%--									default="Fecha Modificacion" /></label></td>--%>
-<%--						<td valign="top"--%>
-<%--							class="value ${hasErrors(bean: deseoInstance, field: 'fechaModificacion', 'errors')}">--%>
-<%--							<g:datePicker name="fechaModificacion" --%>
-<%--								value="${deseoInstance?.fechaModificacion}" />--%>
-<%--						</td>--%>
-<%--					</tr>--%>
-
-					<tr class="prop">
-						<td valign="top" class="name"><label for="email"><g:message
-									code="usuario.email.label"
-									default="Email" /></label></td>
-						<td valign="top"
-							class="value ${hasErrors(bean: usuarioInstance, field: 'email', 'errors')}">
-							<g:textField name="email" 
-								value="${usuarioInstance?.email}" />
-						</td>
-					</tr>
-
 				</tbody>
 			</table>
 		</div>
 
 		<div class="buttons">
-			<g:submitToRemote update="updateMe"
+			<g:submitToRemote update="[success:'updateMe',failure:'divPopUp']"
 				url="[ controller: 'index', action: 'nuevoDeseo']"
 				value="Nuevo deseo" />
 		</div>

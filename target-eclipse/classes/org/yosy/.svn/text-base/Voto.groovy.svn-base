@@ -1,0 +1,13 @@
+package org.yosy
+
+class Voto {
+	
+	String email
+
+	static mapping = {
+		id generator: 'native'
+	}
+	
+	static constraints = {
+	}
+}

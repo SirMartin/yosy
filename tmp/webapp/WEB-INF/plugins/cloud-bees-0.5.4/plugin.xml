@@ -1,0 +1,14 @@
+<plugin name='cloud-bees' version='0.5.4' grailsVersion='1.3.0 &gt; *'>
+  <author>Marco Vermeulen</author>
+  <authorEmail>vermeulen.mp@gmail.com</authorEmail>
+  <title>CloudBees</title>
+  <description>\
+Adds a set of scripts that allow standalone integration with the CloudBees client API.
+</description>
+  <documentation>http://grails.org/plugin/cloud-bees</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

@@ -1,0 +1,18 @@
+<plugin name='webflow' version='1.3.7' grailsVersion='1.2 &gt; *'>
+  <author>Graeme Rocher</author>
+  <authorEmail>graeme.rocher@springsource.com</authorEmail>
+  <title>Spring Web Flow Plugin</title>
+  <description>\
+Integrates Spring Web Flow with Grails
+</description>
+  <documentation>http://grails.org/plugin/webflow</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+  </resources>
+  <dependencies>
+    <plugin name='core' version='1.3 &gt; *' />
+    <plugin name='i18n' version='1.3 &gt; *' />
+    <plugin name='controllers' version='1.3 &gt; *' />
+  </dependencies>
+  <behavior />
+</plugin>

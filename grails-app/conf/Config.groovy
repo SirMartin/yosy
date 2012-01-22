@@ -52,6 +52,13 @@ grails.spring.bean.packages = []
 
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
+
+//Desplegar con el plugin de cloudbees
+cloudbees.api.url='https://yosydev.yosy.cloudbees.net'
+cloudbees.api.key='CLOUD_BEES_API_KEY'
+cloudbees.api.secret='CLOUD_BEES_API_SECRET'
+
+
 //Deploy in tomcat
 tomcat.deploy.username="yosyjvm"
 tomcat.deploy.password="RkttHnG3"

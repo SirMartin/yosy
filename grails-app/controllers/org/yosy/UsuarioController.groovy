@@ -1,6 +1,5 @@
 package org.yosy
 
-
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

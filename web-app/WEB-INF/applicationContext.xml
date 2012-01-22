@@ -1,42 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="grailsApplication" class="org.codehaus.groovy.grails.commons.GrailsApplicationFactoryBean">
+	<bean id="grailsApplication"
+		class="org.codehaus.groovy.grails.commons.GrailsApplicationFactoryBean">
 		<description>Grails application factory bean</description>
-        <property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
-        <property name="grailsResourceLoader" ref="grailsResourceLoader" />
+		<property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
+		<property name="grailsResourceLoader" ref="grailsResourceLoader" />
 	</bean>
 
-	<bean id="pluginManager" class="org.codehaus.groovy.grails.plugins.GrailsPluginManagerFactoryBean">
+	<bean id="pluginManager"
+		class="org.codehaus.groovy.grails.plugins.GrailsPluginManagerFactoryBean">
 		<description>A bean that manages Grails plugins</description>
-        <property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
-        <property name="application" ref="grailsApplication" />
+		<property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
+		<property name="application" ref="grailsApplication" />
 	</bean>
 
-    <bean id="grailsConfigurator" class="org.codehaus.groovy.grails.commons.spring.GrailsRuntimeConfigurator">
-        <constructor-arg>
-            <ref bean="grailsApplication" />
-        </constructor-arg>
-        <property name="pluginManager" ref="pluginManager" />
-    </bean>
+	<bean id="grailsConfigurator"
+		class="org.codehaus.groovy.grails.commons.spring.GrailsRuntimeConfigurator">
+		<constructor-arg>
+			<ref bean="grailsApplication" />
+		</constructor-arg>
+		<property name="pluginManager" ref="pluginManager" />
+	</bean>
 
-    <bean id="grailsResourceLoader" class="org.codehaus.groovy.grails.commons.GrailsResourceLoaderFactoryBean">
-        <property name="grailsResourceHolder" ref="grailsResourceHolder" />
-    </bean>
+	<bean id="grailsResourceLoader"
+		class="org.codehaus.groovy.grails.commons.GrailsResourceLoaderFactoryBean">
+		<property name="grailsResourceHolder" ref="grailsResourceHolder" />
+	</bean>
 
-    <bean id="grailsResourceHolder" scope="prototype" class="org.codehaus.groovy.grails.commons.spring.GrailsResourceHolder">
-        <property name="resources">
-              <value>classpath*:**/grails-app/**/*.groovy</value>
-        </property>
-    </bean>    
-    
-   <bean id="characterEncodingFilter"
-      class="org.springframework.web.filter.CharacterEncodingFilter">
-        <property name="encoding">
-          <value>utf-8</value>
-        </property>
-   </bean>    	
+	<bean id="grailsResourceHolder" scope="prototype"
+		class="org.codehaus.groovy.grails.commons.spring.GrailsResourceHolder">
+		<property name="resources">
+			<value>classpath*:**/grails-app/**/*.groovy</value>
+		</property>
+	</bean>
+
+	<bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
+		<property name="encoding">
+			<value>utf-8</value>
+		</property>
+	</bean>
+
+	<!-- CONFIGURACIÓN ENVÍO DE CORREOS -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="username" value="yosy.noreply@gmail.com" />
+		<property name="port" value="587" />
+		<property name="password" value="Yos!2011" />
+		<property name="defaultEncoding" value="UTF-16" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.starttls.required">true</prop>			
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="no-reply@yosy.org" />
+	</bean>
+
+	<bean id="utilities" class="org.yosy.utils.Utilities">
+		<property name="mailSender" ref="mailSender" />
+		<property name="templateMessage" ref="templateMessage" />
+	</bean>
+
+
 </beans>

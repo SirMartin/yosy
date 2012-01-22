@@ -10,17 +10,14 @@ class Usuario {
 	String email
 	String password
 	Date fechaAlta
-	String tipoUsuario
-
-   TipoUsuario getTipoUsuario() { tipoUsuario ? TipoUsuario.byId(tipoUsuario) : null }
-   void setTipoUsuario(TipoUsuario tipoUsuario) { 
-	   this.tipoUsuario = tipoUsuario.tipoUsuarioId
-	   }
-
-   static transients = ['tipoUsuario']
+	TipoUsuario tipoUsuario
+	EstadoUsuario estadoUsuario
 
 	static mapping = { id generator: 'native' }
 
-	static constraints = { nombre(nullable: true)
-		tipoUsuario inList: TipoUsuario.values()*.id  }
+	static constraints = {
+		nombre(nullable: true,unique:true)
+		email(email:true,unique:true)
+		password(blank:false, password:true)
+	}
 }

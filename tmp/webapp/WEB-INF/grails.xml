@@ -1,0 +1,36 @@
+<grails>
+  <resources>
+    <resource>JQueryConfig</resource>
+    <resource>JQueryPluginResources</resource>
+    <resource>JQueryService</resource>
+    <resource>JQueryResourceTagLib</resource>
+    <resource>JQueryTagLib</resource>
+    <resource>BootStrap</resource>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>Filters</resource>
+    <resource>resources</resource>
+    <resource>UrlMappings</resource>
+    <resource>org.yosy.ComentarioController</resource>
+    <resource>org.yosy.DeseoController</resource>
+    <resource>org.yosy.IndexController</resource>
+    <resource>org.yosy.RegistroController</resource>
+    <resource>org.yosy.UsuarioController</resource>
+    <resource>org.yosy.VotoController</resource>
+    <resource>org.yosy.Comentario</resource>
+    <resource>org.yosy.Deseo</resource>
+    <resource>org.yosy.Estado</resource>
+    <resource>org.yosy.EstadoUsuario</resource>
+    <resource>org.yosy.TipoUsuario</resource>
+    <resource>org.yosy.Usuario</resource>
+    <resource>org.yosy.Voto</resource>
+    <resource>org.yosy.utils.Utilities</resource>
+  </resources>
+  <plugins>
+    <plugin>CloudBeesGrailsPlugin</plugin>
+    <plugin>HibernateGrailsPlugin</plugin>
+    <plugin>JqueryGrailsPlugin</plugin>
+    <plugin>WebflowGrailsPlugin</plugin>
+  </plugins>
+</grails>
