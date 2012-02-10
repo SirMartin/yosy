@@ -6,12 +6,12 @@ class PerfilController {
 
 		def deseosVotados = Deseo.withCriteria {
 			and {
-				votos { eq ("email", session.user.email) }
+				votos { eq ("email", session.user) }
 			}
 		}
 		def deseosCreados = Deseo.withCriteria {
 
-			usuarios { idEq(session.user.id)}
+			usuarios { idEq(session.userId)}
 		}
 		render(view: "../masterpage", model: ["template":"perfil", deseosVotados: deseosVotados, deseosCreados:deseosCreados])
 	}

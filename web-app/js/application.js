@@ -24,3 +24,10 @@ function loginClick() {
 	$('#linkLogout').show();
 	$('linkPerfil').show();
 }
+
+function asdf(){
+	alert('asdf');
+	jQuery('a').approach({
+	"color": #CC3300
+	}, 100);
+}

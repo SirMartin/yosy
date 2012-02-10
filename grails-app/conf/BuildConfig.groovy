@@ -1,6 +1,11 @@
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
+//Desplegar con el plugin de cloudbees
+//cloudbees.api.url='https://yosydev.yosy.cloudbees.net'
+cloudbees.account='yosy'
+cloudbees.api.key='760305C5B894FA80'
+cloudbees.api.secret='CPNHDWE4DLV40X/CNECC7O/0W/SSMLZKODZKRJHTCGC='
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies

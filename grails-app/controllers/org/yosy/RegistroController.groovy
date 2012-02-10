@@ -30,7 +30,7 @@ class RegistroController {
 				timestamp = timestamp.substring(0,timestamp.length()-3) +"0"
 				//
 				utilities.sendEmail(usuarioInstance.email, "Acaba de iniciar un proceso de registro en http://www.yosy.org."
-						+"\nPara confirmar el mismo, sólo tiene que clicar sobre el siguiente <a href='http://localhost:8080/YosyDEV/registro/activate?email="+usuarioInstance.email+"&c="+org.yosy.utils.Utilities.codMD5(usuarioInstance.password+timestamp+usuarioInstance.email)+"'>enlace</a>"
+						+"\nPara confirmar el mismo, sólo tiene que clicar sobre el siguiente <a href='http://yosydev.yosy.cloudbees.net/registro/activate?email="+usuarioInstance.email+"&c="+org.yosy.utils.Utilities.codMD5(usuarioInstance.password+timestamp+usuarioInstance.email)+"'>enlace</a>"
 						,"Finalización de registro yosy.org",true)
 				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
 				//Se cierra el popup
@@ -48,15 +48,15 @@ class RegistroController {
 		def email = params?.email
 		if(email==null || email.length() == 0)
 		{
-			if (flash.noLogIn == true)
-				response.status = 401 // no autorizado
-			render(view: "login", model: [usuarioInstance: new Usuario(),message:params['needsLogin']])
+			render(view: "login", model: [usuarioInstance: new Usuario()])
 		}
 		else {
 			def usuarioInstance = Usuario.findByEmail(email)
 			if(usuarioInstance != null && usuarioInstance.password == org.yosy.utils.Utilities.codMD5(params['password']))
 			{
-				session.user = usuarioInstance
+				session.user = usuarioInstance.email
+				session.estadoUsuario = usuarioInstance.estadoUsuario
+				session.userId = usuarioInstance.id
 				//Se cierra el popup
 				render(view:'../vacio',model: ["actionN":actionName])
 			}
@@ -82,6 +82,8 @@ class RegistroController {
 
 	def logout = {
 		session.user = null
+		session.estadoUsuario = null
+		session.userId = null
 		render(view:'../vacio',model: ["actionN":actionName])
 	}
 }

@@ -6,20 +6,16 @@
 <title><g:message code="default.title.label" /></title>
 <g:setProvider library="jquery" />
 <script type="text/javascript" src="application.js" />
-</head>
-<body>
-
-	<g:javascript>
+<g:javascript>
 	/*<![CDATA[*/
-	function asdf()
-	{
-alert('${session.user == null}');
-}
+	alert('asdf');
 	/*]]>*/
 </g:javascript>
-	<div style="width: 950;">
+</head>
+<body>
+	<div style="margin-top:20px">
 		<div id="main">
-			<table>
+			<table id="divSession">
 				<tr>
 					<td id="linkRegistro"><g:remoteLink controller="registro"
 							update="divPopUp">
@@ -34,7 +30,7 @@ alert('${session.user == null}');
 							<g:message code="default.logout.label" />
 						</g:remoteLink></td>
 					<td id="linkPerfil"><g:link controller="perfil"
-							action="indexPerfil" onmouseover="asdf();">
+							action="indexPerfil">
 							<g:message code="default.perfil.label" />
 						</g:link></td>
 				</tr>
